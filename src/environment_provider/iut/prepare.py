@@ -90,7 +90,7 @@ class Prepare:  # pylint:disable=too-few-public-methods
         try:
             if not self.prepare_ruleset:
                 self.logger.info("No defined preparation rule.")
-                return iuts
+                return iuts, failed_iuts
             thread_pool = ThreadPool()
 
             stages = self.prepare_ruleset.get("stages", {})

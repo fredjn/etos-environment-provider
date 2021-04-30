@@ -171,10 +171,10 @@ class TestSuite:
                     "executor": suite.get("executor").as_dict,
                     "log_area": suite.get("log_area").as_dict,
                 }
-                self.database.write(
-                    sub_suite["executor"]["instructions"]["identifier"],
-                    json.dumps(sub_suite),
-                )
+                # self.database.write(
+                #     sub_suite["executor"]["instructions"]["identifier"],
+                #     json.dumps(sub_suite),
+                # )
                 suites.append(sub_suite)
                 counter += 1
         self._suite = {"suite_name": self.test_suite_name, "suites": suites}

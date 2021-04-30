@@ -111,7 +111,7 @@ class EnvironmentProvider:  # pylint:disable=too-many-instance-attributes
         self.etos.config.set("SUITE_ID", suite_id)
 
         self.etos.config.rabbitmq_publisher_from_environment()
-        self.etos.start_publisher()
+        #self.etos.start_publisher()
         self.environment_provider_config = Config(self.etos, suite_id)
         if not self.environment_provider_config.generated:
             missing = [

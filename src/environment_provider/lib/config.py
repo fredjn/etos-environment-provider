@@ -23,6 +23,7 @@ from .graphql import (
     request_activity_triggered,
     request_artifact_published,
 )
+import json
 
 
 class Config:  # pylint:disable=too-many-instance-attributes
@@ -30,11 +31,11 @@ class Config:  # pylint:disable=too-many-instance-attributes
 
     logger = logging.getLogger("Config")
     __test_suite = None
-    generated = False
-    artifact_created = None
-    artifact_published = None
-    activity_triggered = None
-    tercc = None
+    generated = True
+    artifact_created = {"data": {"identity": "pkg:mock/productX@1.2.3"}}
+    artifact_published = []
+    activity_triggered = {"meta": {"id": "fc20484e-be9f-4141-8aab-2a0130ff512d"}}
+    tercc = {"data": {"customData": "MEH"}}
 
     def __init__(self, etos, tercc_id):
         """Initialize with ETOS library and automatically load the config.
@@ -219,6 +220,10 @@ class Config:  # pylint:disable=too-many-instance-attributes
         :return: Batches.
         :rtype: list
         """
+        if os.environ.get("LOCAL_SUITE", None):
+            with open(os.environ.get("LOCAL_SUITE")) as local_suite_file:
+                self.__test_suite = json.loads(local_suite_file.read())
+
         if self.__test_suite is None:
             try:
                 batch_uri = self.tercc.get("data", {}).get("batchesUri")

@@ -242,6 +242,7 @@ class Configure:
         :type response: :obj:`falcon.response`
         """
         self.request = request
+        print(self.request)
         etos = ETOS(
             "ETOS Environment Provider", os.getenv("HOSTNAME"), "Environment Provider"
         )
