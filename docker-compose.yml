@@ -1,0 +1,48 @@
+version: '2'
+
+networks:
+  etos-net:
+    driver: bridge
+
+services:
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - REDIS_PASSWORD=str0ng_passw0rd
+      - REDIS_SENTINEL_PASSWORD=str0ng_passw0rd
+      - REDIS_MASTER_SET=mymaster
+    networks:
+      - etos-net
+    ports:
+      - '6379'
+  redis-slave:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+      - REDIS_PASSWORD=str0ng_passw0rd
+      - REDIS_SENTINEL_PASSWORD=str0ng_passw0rd
+      - REDIS_MASTER_SET=mymaster
+    ports:
+      - '6379'
+    depends_on:
+      - redis
+    networks:
+      - etos-net
+  redis-sentinel:
+    image: 'bitnami/redis-sentinel:latest'
+    environment:
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+      - REDIS_MASTER_HOST=redis
+      - REDIS_PASSWORD=str0ng_passw0rd
+      - REDIS_SENTINEL_PASSWORD=str0ng_passw0rd
+      - REDIS_MASTER_SET=mymaster
+    depends_on:
+      - redis
+      - redis-slave
+    ports:
+      - '26379'
+    networks:
+      - etos-net

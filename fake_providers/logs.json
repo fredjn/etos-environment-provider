@@ -1,0 +1,20 @@
+{
+    "log": {
+        "id": "default",
+        "list": {
+            "possible": {
+                "$expand": {
+                    "value": {
+                        "livelogs": "http://logs",
+                        "upload": {
+                            "url": "http://logs",
+                            "method": "PUT"
+                        }
+                    },
+                    "to": "$logs_amount"
+                }
+            },
+            "available": "$this.possible"
+        }
+    }
+}

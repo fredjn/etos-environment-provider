@@ -1,0 +1,258 @@
+[
+    {
+        "name": "my_suite",
+        "priority": 1,
+        "recipes": [
+            {
+                "id": "2fe3e583-bb42-4fbe-9bb7-137c310a4afc",
+                "testCase": {
+                    "id": "test.my_test_1",
+                    "tracker": "",
+                    "url": ""
+                },
+                "constraints": [
+                    {
+                        "key": "ENVIRONMENT",
+                        "value": {
+                            "MY_ENV": "ENV"
+                        }
+                    },
+                    {
+                        "key": "PARAMETERS",
+                        "value": {
+                            "--config": "setup.cfg",
+                            "--where": ".",
+                            "--atf-report": "$TEST_ARTIFACT_PATH/report.xml",
+                            "--with-atf-config": "",
+                            "--atf-output-folder": "$TEST_ARTIFACT_PATH",
+                            "--atf-config-file": "config/attributes.conf",
+                            "--atfc-env": "",
+                            "--with-atf-report": "",
+                            "--atf-only-run-tests": "test.my_test_1"
+                        }
+                    },
+                    {
+                        "key": "COMMAND",
+                        "value": "nosetests"
+                    },
+                    {
+                        "key": "EXECUTE",
+                        "value": [
+                            "pre-exec-scripts.sh"
+                        ]
+                    },
+                    {
+                        "key": "CHECKOUT",
+                        "value": [
+                            "git clone ssh://git/MY_SUITE"
+                        ]
+                    },
+                    {
+                        "key": "TEST_RUNNER",
+                        "value": "my_testrunner_docker"
+                    }
+                ]
+            },
+            {
+                "id": "2fe3e583-bb42-4fbe-9bb7-137c310a4afc",
+                "testCase": {
+                    "id": "test.my_test_2",
+                    "tracker": "",
+                    "url": ""
+                },
+                "constraints": [
+                    {
+                        "key": "ENVIRONMENT",
+                        "value": {
+                            "MY_ENV": "ENV"
+                        }
+                    },
+                    {
+                        "key": "PARAMETERS",
+                        "value": {
+                            "--config": "setup.cfg",
+                            "--where": ".",
+                            "--atf-report": "$TEST_ARTIFACT_PATH/report.xml",
+                            "--with-atf-config": "",
+                            "--atf-output-folder": "$TEST_ARTIFACT_PATH",
+                            "--atf-config-file": "config/attributes.conf",
+                            "--atfc-env": "",
+                            "--with-atf-report": "",
+                            "--atf-only-run-tests": "test.my_test_2"
+                        }
+                    },
+                    {
+                        "key": "COMMAND",
+                        "value": "nosetests"
+                    },
+                    {
+                        "key": "EXECUTE",
+                        "value": [
+                            "pre-exec-scripts.sh"
+                        ]
+                    },
+                    {
+                        "key": "CHECKOUT",
+                        "value": [
+                            "git clone ssh://git/MY_SUITE"
+                        ]
+                    },
+                    {
+                        "key": "TEST_RUNNER",
+                        "value": "my_testrunner_docker"
+                    }
+                ]
+            },
+            {
+                "id": "2fe3e583-bb42-4fbe-9bb7-137c310a4afc",
+                "testCase": {
+                    "id": "test.my_test_3",
+                    "tracker": "",
+                    "url": ""
+                },
+                "constraints": [
+                    {
+                        "key": "ENVIRONMENT",
+                        "value": {
+                            "MY_ENV": "ENV"
+                        }
+                    },
+                    {
+                        "key": "PARAMETERS",
+                        "value": {
+                            "--config": "setup.cfg",
+                            "--where": ".",
+                            "--atf-report": "$TEST_ARTIFACT_PATH/report.xml",
+                            "--with-atf-config": "",
+                            "--atf-output-folder": "$TEST_ARTIFACT_PATH",
+                            "--atf-config-file": "config/attributes.conf",
+                            "--atfc-env": "",
+                            "--with-atf-report": "",
+                            "--atf-only-run-tests": "test.my_test_3"
+                        }
+                    },
+                    {
+                        "key": "COMMAND",
+                        "value": "nosetests"
+                    },
+                    {
+                        "key": "EXECUTE",
+                        "value": [
+                            "pre-exec-scripts.sh"
+                        ]
+                    },
+                    {
+                        "key": "CHECKOUT",
+                        "value": [
+                            "git clone ssh://git/MY_SUITE"
+                        ]
+                    },
+                    {
+                        "key": "TEST_RUNNER",
+                        "value": "my_testrunner_docker"
+                    }
+                ]
+            },
+            {
+                "id": "2fe3e583-bb42-4fbe-9bb7-137c310a4afc",
+                "testCase": {
+                    "id": "test.my_test_4",
+                    "tracker": "",
+                    "url": ""
+                },
+                "constraints": [
+                    {
+                        "key": "ENVIRONMENT",
+                        "value": {
+                            "MY_ENV": "ENV"
+                        }
+                    },
+                    {
+                        "key": "PARAMETERS",
+                        "value": {
+                            "--config": "setup.cfg",
+                            "--where": ".",
+                            "--atf-report": "$TEST_ARTIFACT_PATH/report.xml",
+                            "--with-atf-config": "",
+                            "--atf-output-folder": "$TEST_ARTIFACT_PATH",
+                            "--atf-config-file": "config/attributes.conf",
+                            "--atfc-env": "",
+                            "--with-atf-report": "",
+                            "--atf-only-run-tests": "test.my_test_4"
+                        }
+                    },
+                    {
+                        "key": "COMMAND",
+                        "value": "nosetests"
+                    },
+                    {
+                        "key": "EXECUTE",
+                        "value": [
+                            "pre-exec-scripts.sh"
+                        ]
+                    },
+                    {
+                        "key": "CHECKOUT",
+                        "value": [
+                            "git clone ssh://git/MY_SUITE"
+                        ]
+                    },
+                    {
+                        "key": "TEST_RUNNER",
+                        "value": "my_testrunner_docker"
+                    }
+                ]
+            },
+            {
+                "id": "2fe3e583-bb42-4fbe-9bb7-137c310a4afc",
+                "testCase": {
+                    "id": "test.my_test_5",
+                    "tracker": "",
+                    "url": ""
+                },
+                "constraints": [
+                    {
+                        "key": "ENVIRONMENT",
+                        "value": {
+                            "MY_ENV": "ENV"
+                        }
+                    },
+                    {
+                        "key": "PARAMETERS",
+                        "value": {
+                            "--config": "setup.cfg",
+                            "--where": ".",
+                            "--atf-report": "$TEST_ARTIFACT_PATH/report.xml",
+                            "--with-atf-config": "",
+                            "--atf-output-folder": "$TEST_ARTIFACT_PATH",
+                            "--atf-config-file": "config/attributes.conf",
+                            "--atfc-env": "",
+                            "--with-atf-report": "",
+                            "--atf-only-run-tests": "test.my_test_5"
+                        }
+                    },
+                    {
+                        "key": "COMMAND",
+                        "value": "nosetests"
+                    },
+                    {
+                        "key": "EXECUTE",
+                        "value": [
+                            "pre-exec-scripts.sh"
+                        ]
+                    },
+                    {
+                        "key": "CHECKOUT",
+                        "value": [
+                            "git clone ssh://git/MY_SUITE"
+                        ]
+                    },
+                    {
+                        "key": "TEST_RUNNER",
+                        "value": "my_testrunner_docker"
+                    }
+                ]
+            }
+        ]
+    }
+]

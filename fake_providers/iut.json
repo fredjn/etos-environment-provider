@@ -1,0 +1,21 @@
+{
+    "iut": {
+        "id": "default",
+        "list": {
+            "possible": {
+                "$expand": {
+                    "value": {
+                        "type": "$identity.type",
+                        "namespace": "$identity.namespace",
+                        "name": "$identity.name",
+                        "version": "$identity.version",
+                        "qualifiers": "$identity.qualifiers",
+                        "subpath": "$identity.subpath"
+                    },
+                    "to": "$iut_amount"
+                }
+            },
+            "available": "$this.possible"
+        }
+    }
+}

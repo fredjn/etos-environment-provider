@@ -1,0 +1,19 @@
+{
+    "execution_space": {
+        "id": "default",
+        "list": {
+            "possible": {
+                "$expand": {
+                    "value": {
+                        "request": {
+                            "url": "https://fake",
+                            "method": "POST"
+                        }
+                    },
+                    "to": "$exec_space_amount"
+                }
+            },
+            "available": "$this.possible"
+        }
+    }
+}
