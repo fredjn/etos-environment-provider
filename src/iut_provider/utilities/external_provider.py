@@ -230,6 +230,9 @@ class ExternalProvider:
                 )
                 self.check_error(response)
                 response = response.json()
+            except RequestsConnectionError as error:
+                self.logger.error("Error connecting to %r: %r", host, error)
+                continue
             except ConnectionError:
                 self.logger.error("Error connecting to %r", host)
                 continue
