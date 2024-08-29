@@ -127,7 +127,7 @@ def release_full_environment(etos: ETOS, jsontas: JsonTas, suite_id: str) -> tup
     #
     # We need to sleep here for a while to prevent us from deleting the
     # references to the last log files created before etos-client has time to
-    # download the.
+    # download them.
     time.sleep(30)
     for suite, metadata in registry.testrun.join("suite").read_all():
         suite = json.loads(suite)
