@@ -15,6 +15,7 @@
 # limitations under the License.
 """Backend for the environment requests."""
 import json
+import time
 import traceback
 from typing import Optional, Union
 
@@ -121,6 +122,13 @@ def release_full_environment(etos: ETOS, jsontas: JsonTas, suite_id: str) -> tup
     """
     failure = None
     registry = ProviderRegistry(etos, jsontas, suite_id)
+    # TODO: Remove the sleeping when we can communicate the log urls to the
+    # etos-clinet using internal messaging via SSE.
+    #
+    # We need to sleep here for a while to prevent us from deleting the
+    # references to the last log files created before etos-client has time to
+    # download the.
+    time.sleep(30)
     for suite, metadata in registry.testrun.join("suite").read_all():
         suite = json.loads(suite)
         for sub_suite in suite.get("sub_suites", []):
