@@ -19,6 +19,7 @@ import json
 import logging
 import os
 import unittest
+from mock import patch
 
 from etos_lib.lib.config import Config
 from etos_lib.lib.debug import Debug
@@ -123,7 +124,8 @@ class TestEnvironmentProvider(unittest.TestCase):
         Debug()._Debug__events_published.clear()
         Debug()._Debug__events_received.clear()
 
-    def test_get_environment_sub_suites(self):
+    @patch("environment_provider.environment_provider.Kubernetes")
+    def test_get_environment_sub_suites(self, _):
         """Test environment provider with 2 different sub suites.
 
         Approval criteria:
@@ -158,9 +160,10 @@ class TestEnvironmentProvider(unittest.TestCase):
             )
             os.environ["ETOS_GRAPHQL_SERVER"] = server.host
             os.environ["ETOS_API"] = server.host
+            os.environ["TERCC"] = json.dumps(tercc)
 
             self.logger.info("STEP: Run the environment provider.")
-            environment_provider = EnvironmentProvider(suite_id, suite_runner_ids)
+            environment_provider = EnvironmentProvider(suite_runner_ids)
             result = environment_provider.run()
             print(result)
         self.assertIsNone(result.get("error"))
@@ -172,7 +175,8 @@ class TestEnvironmentProvider(unittest.TestCase):
                 environments.append(event)
         self.assertEqual(len(environments), 2)
 
-    def test_get_environment(self):
+    @patch("environment_provider.environment_provider.Kubernetes")
+    def test_get_environment(self, _):
         """Test environment provider with single sub suites.
 
         Approval criteria:
@@ -207,9 +211,10 @@ class TestEnvironmentProvider(unittest.TestCase):
             )
             os.environ["ETOS_GRAPHQL_SERVER"] = server.host
             os.environ["ETOS_API"] = server.host
+            os.environ["TERCC"] = json.dumps(tercc)
 
             self.logger.info("STEP: Run the environment provider.")
-            environment_provider = EnvironmentProvider(suite_id, suite_runner_ids)
+            environment_provider = EnvironmentProvider(suite_runner_ids)
             result = environment_provider.run()
             print(result)
         self.assertIsNone(result.get("error"))
@@ -221,7 +226,8 @@ class TestEnvironmentProvider(unittest.TestCase):
                 environments.append(event)
         self.assertEqual(len(environments), 1)
 
-    def test_get_environment_permutation(self):
+    @patch("environment_provider.environment_provider.Kubernetes")
+    def test_get_environment_permutation(self, _):
         """Test environment provider with 2 different environments for 2 permutations.
 
         Approval criteria:
@@ -259,9 +265,10 @@ class TestEnvironmentProvider(unittest.TestCase):
             )
             os.environ["ETOS_GRAPHQL_SERVER"] = server.host
             os.environ["ETOS_API"] = server.host
+            os.environ["TERCC"] = json.dumps(tercc)
 
             self.logger.info("STEP: Run the environment provider.")
-            environment_provider = EnvironmentProvider(suite_id, suite_runner_ids)
+            environment_provider = EnvironmentProvider(suite_runner_ids)
             result = environment_provider.run()
         self.assertIsNone(result.get("error"))
 
@@ -272,7 +279,8 @@ class TestEnvironmentProvider(unittest.TestCase):
                 environments.append(event)
         self.assertEqual(len(environments), 2)
 
-    def test_get_environment_sub_suites_sequential(self):
+    @patch("environment_provider.environment_provider.Kubernetes")
+    def test_get_environment_sub_suites_sequential(self, _):
         """Test environment provider with 2 different sub suites sequentially.
 
         Approval criteria:
@@ -309,9 +317,10 @@ class TestEnvironmentProvider(unittest.TestCase):
             )
             os.environ["ETOS_GRAPHQL_SERVER"] = server.host
             os.environ["ETOS_API"] = server.host
+            os.environ["TERCC"] = json.dumps(tercc)
 
             self.logger.info("STEP: Run the environment provider.")
-            environment_provider = EnvironmentProvider(suite_id, suite_runner_ids)
+            environment_provider = EnvironmentProvider(suite_runner_ids)
             result = environment_provider.run()
             print(result)
         self.assertIsNone(result.get("error"))
