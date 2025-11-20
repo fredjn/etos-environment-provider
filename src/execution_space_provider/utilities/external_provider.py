@@ -161,13 +161,12 @@ class ExternalProvider:
                     raise exc
             except RequestsConnectionError as error:
                 if "connection refused" in str(error).lower():
-                    self.logger.error("Error connecting to %r: %r", host, error)
+                    self.logger.exception("Error connecting to %r", host)
                     continue
-                span.record_exception(exc)
-                raise exc
+                span.record_exception(error)
                 raise
             except ConnectionError:
-                self.logger.error("Error connecting to %r", host)
+                self.logger.exception("Error connecting to %r", host)
                 continue
         exc = TimeoutError(f"Unable to stop external provider {self.id!r}")
         self._record_exception(exc)
@@ -293,7 +292,7 @@ class ExternalProvider:
                 self.check_error(response)
                 response = response.json()
             except ConnectionError:
-                self.logger.error("Error connecting to %r", host)
+                self.logger.exception("Error connecting to %r", host)
                 continue
 
             if response.get("status") == "FAILED":
@@ -322,7 +321,7 @@ class ExternalProvider:
             if response.json().get("error") is not None:
                 self.logger.error(response.json().get("error"))
         except JSONDecodeError:
-            self.logger.error("Could not parse response as JSON")
+            self.logger.exception("Could not parse response as JSON")
 
         if response.status_code == requests.codes["not_found"]:
             exc = ExecutionSpaceNotAvailable(
